@@ -7,8 +7,16 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        Player player1 = new Player("Player 1");
-        Player player2 = new Player("Player 2");
+        System.out.print("First player name: ");
+        String player1Name = sc.nextLine();
+
+        System.out.print("Second player name: ");
+        String player2Name = sc.nextLine();
+
+        System.out.println("******************************************");
+
+        Player player1 = new Player(player1Name);
+        Player player2 = new Player(player2Name);
 
         takePositions(player1, player2);
 
@@ -43,8 +51,6 @@ public class Main {
             sc.nextLine();
 
         } while (true);
-
-
     }
 
     /**

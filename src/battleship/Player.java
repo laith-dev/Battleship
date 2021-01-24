@@ -32,7 +32,7 @@ public class Player {
     public Player(String name) {
         this.name = name;
 
-        /* Initialize and fill both fields. */
+        /* Initialize and fill both fields with fog of war symbol. */
         field = new char[10][10];
         fogOfWarField = new char[10][10];
         for (int i = 0; i < 10; i++) {
@@ -41,7 +41,6 @@ public class Player {
                 fogOfWarField[i][j] = '~';
             }
         }
-
     }
 
     /**
@@ -76,7 +75,8 @@ public class Player {
      * @param battleship the battleship to get its coordinates.
      */
     void getCoordinatesOf(Battleship battleship) {
-        System.out.printf("Enter the coordinates of the %s (%d cells):\n", battleship.getType(), battleship.getSize());
+        System.out.printf("Enter the coordinates of the %s (%d cells):\n",
+                battleship.getType(), battleship.getSize());
 
         Scanner sc = new Scanner(System.in);
         String cord1, cord2;
@@ -92,7 +92,7 @@ public class Player {
                 continue;
             }
 
-            /* Get and check the orientation of the entered coordinates. */
+            /* Check and get the orientation of the entered coordinates if it's valid. */
             orientation = getOrientationOf(cord1, cord2);
             if (orientation.equals("unknown")) {
                 System.out.print("Error! Wrong ship orientation! Try again:\n");
@@ -139,7 +139,7 @@ public class Player {
                     neighbours[0] = new Cell(row + 1, i);
                     neighbours[1] = new Cell(row - 1, i);
                     for (Cell neighbour : neighbours) {
-                        /* Don't go outside the field. */
+                        // Make sure that the neighbouring cells are not outside the field.
                         if (neighbour.row <= MAX_INDEX && neighbour.row >= MIN_INDEX) {
                             if (!isCellEmpty(field, neighbour)) {
                                 tooCloseToAnotherShip = true;
@@ -425,8 +425,8 @@ public class Player {
      * Place the ship represented by cord1 & cord2 on the field.
      * Fill the cells from cord1 -> cord2 with 'O'.
      *
-     * @param cord1       the head of the battleship.
-     * @param cord2       the tail of the battleship.
+     * @param cord1       the first end of the battleship.
+     * @param cord2       the second end of the battleship.
      * @param orientation of the battleship.
      */
     private void placeShip(String cord1, String cord2, String orientation) {
@@ -437,9 +437,9 @@ public class Player {
                 int cord1Col = extractColIndex(cord1.substring(1));
                 int cord2Col = extractColIndex(cord2.substring(1));
 
-                int starColIndex = Math.min(cord1Col, cord2Col);
+                int startColIndex = Math.min(cord1Col, cord2Col);
                 int endColIndex = Math.max(cord1Col, cord2Col);
-                for (int i = starColIndex; i <= endColIndex; i++) {
+                for (int i = startColIndex; i <= endColIndex; i++) {
                     field[row][i] = 'O';
                 }
 
@@ -458,7 +458,7 @@ public class Player {
     }
 
     /**
-     * Take a shot and hit a point on the opponent's field and report the result.
+     * Take a shot and hit a point on the opponent's field then report the result.
      *
      * @param opponent of this player.
      * @return the report of the shot.
@@ -496,6 +496,7 @@ public class Player {
                     opponent.battleships.remove(battleship);
                     report = "You sank a ship! Specify a new target";
 
+                    // Check if the player has already won by sinking all the opponent's ships.
                     if (opponent.battleships.size() == 0) {
                         report = "You sank the last ship. You won. Congratulations!\n" +
                                 "The winner is " + this.name;

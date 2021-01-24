@@ -62,7 +62,7 @@ public class Battleship {
      * @param field      the field in which to check the battleship still exists or not.
      * @return true if the battleship is sunk, otherwise false.
      */
-    static boolean isSunk(char[][] field, Battleship battleship) {
+    public static boolean isSunk(char[][] field, Battleship battleship) {
         switch (battleship.orientation) {
             case "horizontal":
                 /* In horizontal mode, the difference is in the columns. */
@@ -70,10 +70,10 @@ public class Battleship {
                 int cord1Col = extractColIndex(battleship.getCord1().substring(1));
                 int cord2Col = extractColIndex(battleship.getCord2().substring(1));
 
-                int starColIndex = Math.min(cord1Col, cord2Col);
+                int startColIndex = Math.min(cord1Col, cord2Col);
                 int endColIndex = Math.max(cord1Col, cord2Col);
-                /* If a single O found, the ship is still alive and not sunk yet. */
-                for (int i = starColIndex; i <= endColIndex; i++) {
+                /* If a single O found, then ship is still alive and not sunk yet. */
+                for (int i = startColIndex; i <= endColIndex; i++) {
                     if (field[row][i] == 'O') {
                         return false;
                     }
@@ -102,8 +102,6 @@ public class Battleship {
                 throw new IllegalStateException("Unknown orientation of battleship " + battleship.orientation);
         }
     }
-
-
 }
 
 
