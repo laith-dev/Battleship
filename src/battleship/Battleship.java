@@ -20,7 +20,7 @@ public class Battleship {
      * Create a battleship by specifying its type and size.
      *
      * @param type of the ship.
-     * @param size of the ship.
+     * @param size of the ship in cells.
      */
     public Battleship(String type, int size) {
         this.type = type;
@@ -103,17 +103,3 @@ public class Battleship {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

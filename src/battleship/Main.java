@@ -23,7 +23,7 @@ public class Main {
         /*
          * Keep asking the players to hit each other's ships until one of them loses all of his ships.
          * */
-        do {
+        while (true) {
             // Player 1 starts the first move.
             String report = player1.takeShotAndReport(player2);
 
@@ -49,8 +49,7 @@ public class Main {
             System.out.println(report + "\n" +
                     "Press Enter and pass the move to another player");
             sc.nextLine();
-
-        } while (true);
+        }
     }
 
     /**
@@ -91,25 +90,4 @@ public class Main {
 
         System.out.println();
     }
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

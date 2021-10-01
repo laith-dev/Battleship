@@ -3,7 +3,6 @@ package battleship;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static battleship.Battleship.isSunk;
 import static battleship.Main.printField;
 
 public class Player {
@@ -44,7 +43,7 @@ public class Player {
     }
 
     /**
-     * Ask this player to place his ships on the battle field.
+     * Ask this player to place his ships on the battlefield.
      */
     void takePosition() {
         System.out.println(this.name + ", place your ships on the game field");
@@ -70,7 +69,7 @@ public class Player {
     }
 
     /**
-     * Get the coordinates of battleship.
+     * Get the coordinates of a battleship.
      *
      * @param battleship the battleship to get its coordinates.
      */
@@ -81,7 +80,7 @@ public class Player {
         Scanner sc = new Scanner(System.in);
         String cord1, cord2;
 
-        // How the battleship will be placed in the battle field (horizontally or vertically).
+        // How the battleship will be placed in the battlefield (horizontally or vertically).
         String orientation;
         do {
             cord1 = sc.next();
@@ -197,7 +196,7 @@ public class Player {
                         break;
                     }
 
-                    /* For each cell, check the tow cells close to it. One to the right and the other to the left. */
+                    /* For each cell, check the two cells close to it. One to the right and the other to the left. */
                     neighbours[0] = new Cell(i, col + 1);
                     neighbours[1] = new Cell(i, col - 1);
                     for (Cell neighbour : neighbours) {
@@ -492,7 +491,7 @@ public class Player {
 
             // Check if a ship was sunk due to the hit.
             for (Battleship battleship : opponent.battleships) {
-                if (isSunk(opponent.field, battleship)) {
+                if (Battleship.isSunk(opponent.field, battleship)) {
                     opponent.battleships.remove(battleship);
                     report = "You sank a ship! Specify a new target";
 
@@ -501,38 +500,10 @@ public class Player {
                         report = "You sank the last ship. You won. Congratulations!\n" +
                                 "The winner is " + this.name;
                     }
-
                     break;
                 }
             }
         }
-
         return report;
     }
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
