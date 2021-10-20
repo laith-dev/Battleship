@@ -262,17 +262,16 @@ public class Player {
             return false;
         }
 
-        /* Check the row part of the coordinate, it should be in range [A-J]. */
+        /* Row part of the coordinate should be in range [A-J]. */
         if (!String.valueOf(cord.charAt(0)).matches("[A-J]")) {
             return false;
         }
 
-        /* Check the column part of the coordinate, it should be in range [1-10]. */
-        if (!(cord.substring(1).matches("[1-9]") ||
-                cord.substring(1).matches("10"))) {
+        /* Column part of the coordinate should be in range [1-10]. */
+        if (!cord.substring(1).matches("[1-9]") &&
+                !cord.substring(1).matches("10")) {
             return false;
         }
-
         return true;
     }
 
