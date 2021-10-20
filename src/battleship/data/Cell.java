@@ -1,4 +1,4 @@
-package battleship;
+package battleship.data;
 
 public class Cell {
     int row;
@@ -14,5 +14,4 @@ public class Cell {
         this.row = row;
         this.col = col;
     }
-
 }

@@ -1,4 +1,4 @@
-package battleship;
+package battleship.data;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -24,7 +24,7 @@ public class Player {
     ArrayList<Battleship> battleships;
 
     /**
-     * Create a player by specifying his name.
+     * Create a player by providing his name.
      *
      * @param name the name of the player.
      */
@@ -45,7 +45,7 @@ public class Player {
     /**
      * Ask this player to place his ships on the battlefield.
      */
-    void takePosition() {
+    public void takePosition() {
         System.out.println(this.name + ", place your ships on the game field");
         printField(field);
 
@@ -461,7 +461,7 @@ public class Player {
      * @param opponent of this player.
      * @return the report of the shot.
      */
-    String takeShotAndReport(Player opponent) {
+    public String takeShotAndReport(Player opponent) {
         Scanner sc = new Scanner(System.in);
 
         printField(opponent.fogOfWarField);

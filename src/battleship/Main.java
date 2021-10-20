@@ -1,5 +1,7 @@
 package battleship;
 
+import battleship.data.Player;
+
 import java.util.Scanner;
 
 public class Main {
@@ -70,7 +72,7 @@ public class Main {
      *
      * @param field the field to be printed.
      */
-    static void printField(char[][] field) {
+    public static void printField(char[][] field) {
         // Column header represents column coordinates.
         System.out.println("\n  1 2 3 4 5 6 7 8 9 10");
 

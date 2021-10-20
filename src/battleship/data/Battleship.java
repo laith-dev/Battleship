@@ -1,6 +1,6 @@
-package battleship;
+package battleship.data;
 
-import static battleship.Player.*;
+import static battleship.data.Player.*;
 
 public class Battleship {
 
